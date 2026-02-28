@@ -20,6 +20,8 @@ st.set_page_config(
 # ============================================================
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
     /* Global Font Fix */
@@ -158,17 +160,17 @@ learner_category = cluster_label_map[cluster_id]
 # ============================================================
 # DASHBOARD MAIN
 # ============================================================
-st.markdown("<h1 style='color: #3b82f6;'>Student Intelligence Portal</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: #3b82f6; font-family: Roboto Slab, serif;'>Student Intelligence Portal</h1>", unsafe_allow_html=True)
 st.markdown("Predictive success tracking and academic intervention analytics.")
 
-st.markdown("<div class='section-title'>Executive Summary</div>", unsafe_allow_html=True)
+st.markdown("<div class='section-title';>Executive Summary</div>", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown(f"""<div class='metric-container'>
         <div class='metric-label'>Predicted Score</div>
-        <div class='metric-value' style='color:#3b82f6'>{predicted_exam_score:.1f}%</div>
+        <div class='metric-value' style='color:#3b82f6>{predicted_exam_score:.1f}%</div>
     </div>""", unsafe_allow_html=True)
 
 with col2:
