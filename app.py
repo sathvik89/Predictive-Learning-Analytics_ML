@@ -680,7 +680,6 @@ def predict_page():
             <div style='background: var(--bg-card); border: 1.5px dashed var(--border); border-radius: var(--radius);
                         height: 820px; display: flex; flex-direction: column; align-items: center;
                         justify-content: center; text-align: center; padding: 4rem;'>
-                <div style='font-size: 3.5rem; opacity: 0.15; margin-bottom: 1.5rem;'>STATUS</div>
                 <div style='font-family: Playfair Display, serif; font-size: 1.3rem; font-weight: 600; color: var(--text-dim);'>Ready for Input</div>
                 <div style='font-size: 0.92rem; color: var(--text-dim); margin-top: 0.8rem; max-width: 280px; line-height: 1.6; opacity: 0.7;'>
                     Fill in the student profile on the left and click <strong>Update Insights</strong>.
@@ -723,10 +722,7 @@ def predict_page():
             else:
                 learner_seg = "At-Risk"
 
-            is_pass     = predicted_result == "Pass"
             result_color = "#5a8a45" if is_pass else "#c05840"
-            seg_icons   = {"At-Risk": "WARNING", "Average": "BOOK", "High-Performer": "TROPHY"}
-            seg_icon    = seg_icons.get(learner_seg, "STATS")
 
             # -- Executive Summary --
             st.markdown("<div class='section-title' style='margin-top:0;'>Executive Summary</div>", unsafe_allow_html=True)
@@ -749,7 +745,7 @@ def predict_page():
                 st.markdown(f"""
                 <div class='intel-card' style='text-align:center; border-top: 3px solid var(--text-dim);'>
                     <div class='card-label'>Learner Segment</div>
-                    <div style='font-family: Playfair Display, serif; font-size: 1.7rem; font-weight: 700; color: var(--text); margin-top: 0.3rem;'>{seg_icon} {learner_seg}</div>
+                    <div style='font-family: Playfair Display, serif; font-size: 1.7rem; font-weight: 700; color: var(--text); margin-top: 0.3rem;'>{learner_seg}</div>
                 </div>
                 """, unsafe_allow_html=True)
 
