@@ -722,6 +722,7 @@ def predict_page():
             else:
                 learner_seg = "At-Risk"
 
+            is_pass      = predicted_result == "Pass"
             result_color = "#5a8a45" if is_pass else "#c05840"
 
             # -- Executive Summary --
