@@ -1,0 +1,43 @@
+13:     page_icon="🎓",
+35: # WARM CREAM THEME — GLOBAL CSS
+351:         <div style='font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;'>ML Analytics Portal · Milestone 1</div>
+367:         <div style='font-size: 0.85rem; color: var(--text); font-weight: 600; margin-top: 0.5rem;'>R² Score: 0.940</div>
+388:         <div style='font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem;'>ML Milestone 1 · February 2026</div>
+391:             Advanced behavioral analysis and success forecasting built on 30,640 records using classical ML architecture — enabling targeted academic support and early intervention strategies.
+399:         ("Score Prediction", "Linear Regression model forecasts writing exam scores with R² = 0.94 and MAE of just 3.04 marks."),
+432:             📌 Test Preparation is the Single Biggest Academic Differentiator
+437:             while 0% of Average students did. Study time alone does not predict success — <em>how</em> students 
+444:                 <div style='font-size: 0.8rem; color: var(--text-dim);'>Avg Score · 8% Prep</div>
+449:                 <div style='font-size: 0.8rem; color: var(--text-dim);'>Avg Score · 0% Prep</div>
+454:                 <div style='font-size: 0.8rem; color: var(--text-dim);'>Avg Score · 100% Prep</div>
+465:                 Sathvik Koriginja &nbsp;·&nbsp; Anushka Tyagi &nbsp;·&nbsp; Apoorva Choudhary
+468:                 Project Collaboration · Gen AI Milestone 1
+571:             <div class='card-body'>Moderate cluster separation — expected given overlapping learner profiles.</div>
+590:                     ✓ Standardised category names<br>
+591:                     ✓ WklyStudyHours → midpoint numeric<br>
+592:                     ✓ Ordinal encoding (manual, no LabelEncoder)<br>
+593:                     ✓ IQR-based outlier clipping<br>
+594:                     ✓ StandardScaler fit on train only
+600:                     ✓ 80/20 stratified train/test split<br>
+601:                     ✓ 5-fold cross-validation on both models<br>
+602:                     ✓ class_weight='balanced' (no SMOTE needed)<br>
+603:                     ✓ Pass/Fail threshold = median (69.0) — data-driven<br>
+604:                     ✓ No data leakage — scaler applied post-split
+618:         st.warning("⚠️ Prediction Engine unavailable. Please verify model files in /models/")
+632:             st.markdown("<div class='input-group-header'>🎓 Academic Baseline</div>", unsafe_allow_html=True)
+641:             st.markdown("<div class='input-group-header'>⏱ Weekly Habits</div>", unsafe_allow_html=True)
+642:             study_map   = {"Low — < 5 hrs": 2.5, "Moderate — 5–10 hrs": 7.5, "High — > 10 hrs": 12.0}
+651:             st.markdown("<div class='input-group-header'>👤 Demographic & Misc</div>", unsafe_allow_html=True)
+686:                 <div style='font-size: 3.5rem; opacity: 0.15; margin-bottom: 1.5rem;'>📊</div>
+725:             seg_icons   = {"At-Risk": "⚠️", "Average": "📘", "High-Performer": "🏆"}
+726:             seg_icon    = seg_icons.get(learner_seg, "📊")
+728:             # ── Executive Summary ──
+753:             # ── Performance Analytics ──
+808:             # ── Strategic Recommendations ──
+814:                 recs.append(("📝", "Enroll in Test Preparation", "This student has not completed test prep. Data shows 100% of High-Performers completed it — this single factor has the highest impact on outcome."))
+816:                 recs.append(("🏆", "Sustainability & Advancement", "Maintain prep consistency and explore advanced peer mentoring or enrichment programs."))
+819:                 recs.append(("⏱", "Increase Study Hours", "Student is in the Low study category (<5 hrs/wk). Moving to Moderate (5–10 hrs) can meaningfully improve score predictions."))
+821:                 recs.append(("✅", "Study Habits on Track", f"Weekly study commitment of {study_label.split('—')[1].strip()} is well-positioned. Focus on quality over quantity."))
+824:                 recs.append(("⚠️", "Early Intervention Alert", f"Predicted score ({predicted_score:.1f}) is below the Pass threshold (69.0). Consider targeted academic support immediately."))
+839:                     ✅ <strong style='color: var(--text);'>Note:</strong> Student has already completed prep courses, which positively weights the prediction.
+844:             if st.button("↩ Reset Predictor", key="reset"):
