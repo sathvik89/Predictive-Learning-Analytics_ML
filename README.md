@@ -1,7 +1,7 @@
 # Intelligent Learning Analytics System
 
 **Milestone 1 — ML-Based Student Performance Prediction**  
-Gen AI Course Project | February 2026
+| February 2026
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
@@ -22,11 +22,11 @@ This is **Milestone 1** of a two-phase project. Milestone 2 will extend the syst
 
 ## Team
 
-| Name | Contribution |
-|------|-------------|
-| Sathvik Koriginja | ML pipeline, model training, evaluation |
-| Anushka Tyagi | Data preprocessing, feature engineering |
-| Apoorva Choudhary | Streamlit dashboard, deployment |
+| Name |
+|------|
+| Sathvik Koriginja |
+| Anushka Tyagi |
+| Apoorva Choudhary |
 
 ---
 
