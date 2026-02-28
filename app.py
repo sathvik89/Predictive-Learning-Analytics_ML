@@ -26,12 +26,15 @@ st.markdown("""
     html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
     }
-
+    .block-container {
+    padding-top: 1rem;
+    padding-bottom: 0.3rem;
+    }
     /* Modern Card UI - Works in Dark/Light Mode */
     .metric-container {
         background: rgba(255, 255, 255, 0.05); /* Semi-transparent */
         border: 1px solid rgba(128, 128, 128, 0.2);
-        padding: 24px;
+        padding: 10px;
         border-radius: 16px;
         text-align: center;
         backdrop-filter: blur(10px);
