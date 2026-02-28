@@ -107,13 +107,32 @@ div[data-baseweb="slider"] > div > div > div {
 .stSlider [role="slider"] {
     background-color: var(--accent) !important;
     border: 2px solid white !important;
+    cursor: pointer !important;
 }
 
 /* ---- SELECTBOX / RADIO ---- */
 div[data-baseweb="select"] > div {
-    background: var(--bg-card) !important;
-    border-color: var(--border) !important;
+    background: white !important;
+    border: 1px solid var(--border) !important;
     border-radius: 10px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+div[data-baseweb="select"] > div:hover {
+    border-color: var(--accent) !important;
+}
+div[data-baseweb="select"] > div:focus-within {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px rgba(176,125,78,0.2) !important;
+}
+div[data-baseweb="select"] * {
+    color: var(--text) !important;
+    cursor: pointer !important;
+}
+div[data-baseweb="select"] svg {
+    fill: var(--accent) !important;
+    width: 18px !important;
+    height: 18px !important;
 }
 .stRadio [data-testid="stMarkdownContainer"] p { color: var(--text) !important; }
 
