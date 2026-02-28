@@ -180,8 +180,17 @@ student-analytics/
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/student-analytics.git
-cd student-analytics
+git clone https://github.com/sathvik89/Predictive-Learning-Analytics_ML.git
+cd Predictive-Learning-Analytics_ML
+
+# Create and activate a virtual environment
+# On macOS / Linux
+python -m venv venv
+source venv/bin/activate
+
+# On Windows
+python -m venv venv
+venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
