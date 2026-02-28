@@ -8,6 +8,7 @@ import plotly.express as px
 # ============================================================
 # PAGE CONFIG
 # ============================================================
+
 st.set_page_config(
     page_title="Student Intelligence Portal",
     page_icon="🎓",
@@ -17,6 +18,7 @@ st.set_page_config(
 # ============================================================
 # WARM CREAM UI — Matching reference design
 # ============================================================
+
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&display=swap');
@@ -367,6 +369,7 @@ with col3:
     </div>""", unsafe_allow_html=True)
 
 # ── Performance Analytics ──────────────────────────────────
+
 st.markdown("<div class='section-title'>Performance Analytics</div>", unsafe_allow_html=True)
 
 v_col1, v_col2 = st.columns([1.5, 1])
@@ -432,6 +435,7 @@ with v_col2:
     st.plotly_chart(fig_gauge, use_container_width=True)
 
 # ── Strategic Recommendations ──────────────────────────────
+
 st.markdown("<div class='section-title'>Strategic Recommendations</div>", unsafe_allow_html=True)
 
 r_col1, r_col2 = st.columns(2)
