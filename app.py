@@ -11,8 +11,8 @@ import joblib
 # ============================================================
 
 st.set_page_config(
-    page_title="Student Intelligence Portal",
-    page_icon="🎓",
+    page_title="Student Performance Analytics Dashboard",
+    page_icon="STUDENT",
     layout="wide"
 )
 
@@ -267,7 +267,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============================================================
-# LOAD MODELS (Logic Preserved)
+# SESSION STATE
 # ============================================================
 @st.cache_resource
 def load_models():
@@ -282,7 +282,7 @@ def load_models():
 linear_model, logistic_model, kmeans_model, scaler_reg, scaler_clf, scaler_cluster = load_models()
 
 # ============================================================
-# SIDEBAR — USER INPUTS
+# SIDEBAR
 # ============================================================
 with st.sidebar:
     st.title("Student Profile")
