@@ -1239,6 +1239,7 @@ st.caption("Milestone 1 Analytics Dashboard | Gen AI Course | February 2026")
                 predicted_score, study_hours, parent_educ,
                 lunch_type, test_prep, practice_sport
             ]])
+            # Initial Determination via KMeans (Primary)
             if scaler_cluster and kmeans_model:
                 cluster_scaled = scaler_cluster.transform(cluster_input)
                 raw_label      = kmeans_model.predict(cluster_scaled)[0]
@@ -1254,6 +1255,19 @@ st.caption("Milestone 1 Analytics Dashboard | Gen AI Course | February 2026")
                     learner_seg = "Average"
                 else:
                     learner_seg = "High-Performer"
+
+            # ── Logic Alignment Overrides ──
+            # Apply intuitive overrides to ensure segment follows predicted score
+            if predicted_score < 60:
+                learner_seg = "At-Risk"
+            elif predicted_score > 82:
+                learner_seg = "High-Performer"
+            else:
+                # In the 60-82 range, we refine based on specific thresholds
+                if learner_seg == "High-Performer" and predicted_score < 76:
+                    learner_seg = "Average"
+                if learner_seg == "At-Risk" and predicted_score > 65:
+                    learner_seg = "Average"
 
             is_pass      = predicted_result == "Pass"
             result_color = "#5a8a45" if is_pass else "#c05840"
