@@ -395,9 +395,9 @@ def home_page():
     c1, c2, c3, c4 = st.columns(4)
     caps = [
         ("📈", "Score Prediction",
-         "Linear Regression predicts ExamScore (R² = 0.94, MAE = 3.0) using 11 academic and behavioural features."),
+         "Linear Regression forecasts student ExamScore with R² = 0.9397 and MAE of 3.04 marks from 11 academic and behavioural features."),
         ("✅", "Pass / Fail Classification",
-         "Logistic Regression classifies students with 91.8% accuracy using balanced class weights (no SMOTE)."),
+         "Logistic Regression classifies students at 91.76% accuracy with class_weight='balanced' — no SMOTE required."),
         ("🔍", "Learner Segmentation",
          "K-Means (k=3) groups students into At-Risk, Average, and High-Performer clusters based on performance and behaviour."),
         ("⚠️", "Early Intervention",
@@ -407,6 +407,7 @@ def home_page():
         with col:
             st.markdown(f"""
             <div class='intel-card'>
+                <div style='font-size: 1.6rem; margin-bottom: 0.8rem;'>{icon}</div>
                 <div style='font-family: Playfair Display, serif; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem;'>{title}</div>
                 <div class='card-body'>{body}</div>
             </div>
