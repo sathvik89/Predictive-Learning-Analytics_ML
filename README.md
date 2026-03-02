@@ -31,24 +31,15 @@ This is **Milestone 1** of a two-phase project. Milestone 2 will extend the syst
 ---
 ## Tech Stack & Tools
 
-### **Machine Learning**
-* **Models:** Linear Regression, Logistic Regression, K-Means Clustering
-* **Library:** [Scikit-Learn](https://scikit-learn.org/)
-
-### **Data Processing & Analysis**
-* **Pandas:** Data manipulation and analysis.
-* **NumPy:** Numerical computing and array processing.
-
-### **Data Visualization**
-* **Static:** Matplotlib, Seaborn
-* **Interactive:** Plotly
-
-### **Deployment & UI**
-* **Frontend:** [Streamlit](https://streamlit.io/) (Python-based UI framework)
-* **Hosting:** Streamlit Community Cloud
-* **Version Control:** GitHub
-
---
+| Category | Tools & Technologies |
+| :--- | :--- |
+| **Machine Learning** | Scikit-Learn (Linear Regression, Logistic Regression, K-Means) |
+| **Data Processing** | Pandas, NumPy |
+| **Visualization** | Matplotlib, Seaborn, Plotly |
+| **UI Framework** | Streamlit |
+| **Version Control** | GitHub |
+| **Deployment** | Streamlit Community Cloud |
+---
 
 ## Table of Contents
 
