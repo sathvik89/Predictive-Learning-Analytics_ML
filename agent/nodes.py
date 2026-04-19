@@ -188,6 +188,11 @@ def _no_context_message(web_attempted: bool) -> str:
     )
 
 
+def _is_rate_limit_error(error: Exception) -> bool:
+    text = str(error).lower()
+    return error.__class__.__name__ == "RateLimitError" or "rate limit" in text or "429" in text
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # 1. MASTER / SUPERVISOR NODE
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -281,8 +286,25 @@ Current state snapshot:
 USER QUERY: {user_msg}
 """
 
-    plan_obj = architect_llm.invoke(system_prompt)
-    new_plan = plan_obj.steps
+    try:
+        plan_obj = architect_llm.invoke(system_prompt)
+        new_plan = plan_obj.steps
+        reasoning = plan_obj.reasoning
+    except Exception as e:
+        print(f"[master] planner fallback due to llm error: {e}")
+        fallback_plan = _deterministic_plan(user_msg) or (
+            ["retriever", "end"] if _wants_concept_help(user_msg) else ["end"]
+        )
+        return {
+            "plan": fallback_plan,
+            "current_step_index": 1,
+            "next_node": fallback_plan[0],
+            "messages": (
+                [AIMessage(content="The coach is currently under heavy load, so I switched to a lightweight routing path.")]
+                if _is_rate_limit_error(e)
+                else []
+            ),
+        }
 
     # ── Guardrails ────────────────────────────────────────────────────────────
     valid    = {"analyser", "retriever", "planner", "quizzer", "end"}
@@ -320,7 +342,7 @@ USER QUERY: {user_msg}
         new_plan = ["end"]
 
     print(f"Plan      → {new_plan}")
-    print(f"Reasoning → {plan_obj.reasoning}")
+    print(f"Reasoning → {reasoning}")
 
     return {
         "plan":               new_plan,
@@ -845,5 +867,19 @@ Multiple intents → use ONLY these headers in order (omit unused ones):
 Generate the best possible response now.
 """
 
-    response = llm.invoke(prompt)
-    return {"messages": [AIMessage(content=response.content)]}
+    try:
+        response = llm.invoke(prompt)
+        return {"messages": [AIMessage(content=response.content)]}
+    except Exception as e:
+        print(f"[end] fallback due to llm error: {e}")
+        if _is_rate_limit_error(e):
+            msg = (
+                "I can still help, but the language model quota is temporarily exhausted right now. "
+                "Please retry in a few minutes, or reduce response length while quota resets."
+            )
+        else:
+            msg = (
+                "I hit a temporary response-generation issue. Please retry your last message, "
+                "and I will continue from the same context."
+            )
+        return {"messages": [AIMessage(content=msg)]}

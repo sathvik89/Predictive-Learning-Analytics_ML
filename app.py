@@ -417,6 +417,11 @@ def _friendly_error_message(error_id: str) -> str:
     )
 
 
+def _is_rate_limit_error(error: Exception) -> bool:
+    text = str(error).lower()
+    return error.__class__.__name__ == "RateLimitError" or "rate limit" in text or "429" in text
+
+
 def _save_assistant_failure(session_id: str, content: str) -> None:
     save_message(session_id, "assistant", content)
     st.session_state.chat_display.append({"role": "assistant", "content": content})
@@ -445,7 +450,20 @@ def _handle_user_message(user_input: str, coach_app, status_box=None):
 
     if status_box:
         status_box.update(label="Running the study-coach graph...", state="running")
-    result_state = coach_app.invoke(current_state)
+    try:
+        result_state = coach_app.invoke(current_state)
+    except Exception as e:
+        if _is_rate_limit_error(e):
+            ai_response = (
+                "The AI provider token quota is temporarily exhausted, so the study coach cannot generate "
+                "a full response right now.\n\nPlease wait a few minutes and retry, or use a shorter prompt."
+            )
+            save_message(sid, "assistant", ai_response)
+            st.session_state.chat_display.append({"role": "assistant", "content": ai_response})
+            if status_box:
+                status_box.update(label="Provider quota limit reached. Please retry shortly.", state="error")
+            return ai_response
+        raise
 
     if status_box:
         status_box.update(label="Formatting and saving the response...", state="running")
