@@ -294,5 +294,3 @@ This project demonstrates the evolution from a traditional machine learning pipe
 
 **Built for Gen AI Course — Milestone 1 & 2**
 Sathvik Koriginja | Anushka Tyagi | Apoorva Choudhary
-
-```
