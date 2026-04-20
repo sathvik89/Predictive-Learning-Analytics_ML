@@ -24,7 +24,7 @@ load_dotenv()
 # ─────────────────────────────────────────────
 st.set_page_config(
     page_title="Predictive Learning Analytics",
-    page_icon="🎓",
+    page_icon=":material/insights:",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -70,14 +70,18 @@ def _sidebar_nav():
         from modules.icons import icon as _icon
 
         st.markdown(f"""
-        <div style='padding: 1.4rem 1rem 1.2rem 1rem; border-bottom: 1px solid var(--border); margin-bottom: 1.2rem;'>
-            <div style='display:flex; align-items:center; gap:0.7rem; margin-bottom:0.4rem;'>
-                {_icon("layers", "#b07d4e")}
-                <div style='font-family: Playfair Display, serif; font-size: 1.25rem; font-weight: 700;
-                            color: var(--text); line-height: 1.25;'>Student Performance<br>Analytics</div>
+        <div style='padding: 1.4rem 1rem 1.1rem 1rem; border-bottom: 1px solid var(--border); margin-bottom: 1.1rem;'>
+            <div style='display:flex; align-items:start; gap:0.9rem; margin-bottom:1rem;'>
+                <div style='margin-top: 0.3rem;'>{_icon("layers", "#b07d4e")}</div>
+                <div style='font-family: Playfair Display, serif; font-size: 1.85rem; font-weight: 900;
+                            color: var(--text); line-height: 1.05; letter-spacing: -0.02em;'>
+                    Student Performance<br>Analytics
+                </div>
             </div>
-            <div style='font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;
-                        text-transform: uppercase; letter-spacing: 0.07em;'>ML Analytics &middot; Milestone 1</div>
+            <div style='font-size: 0.78rem; color: var(--text-dim); margin-top: 0.7rem;
+                        text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.75;'>
+                ML Analytics &middot; Milestone 1
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -95,7 +99,7 @@ def _sidebar_nav():
                 st.session_state.page = "predict"
                 st.rerun()
 
-        st.markdown('<hr style="border-color:var(--border); margin:1rem 0;">', unsafe_allow_html=True)
+        st.markdown('<hr style="border-color:var(--border); margin:0.7rem 0;">', unsafe_allow_html=True)
 
         # ── Page switcher buttons (Dashboard ↔️ AI Study Coach) ────────────────
         dash_style  = "nav-btn-active" if current == "dashboard" else ""
@@ -133,7 +137,7 @@ def _sidebar_nav():
                 st.markdown(
                     f"""
                     <div style="margin-top:0.8rem;">
-                      <div class="sidebar-section-label">🎯 Quiz in Progress</div>
+                      <div class="sidebar-section-label">{_icon("target", "var(--accent)")} &nbsp;Quiz in Progress</div>
                       <div class="quiz-progress-bar">
                         <div class="quiz-progress-fill" style="width:{pct}%"></div>
                       </div>
@@ -222,11 +226,11 @@ def _sidebar_nav():
         if current == "dashboard":
             from modules.icons import icon as _icon2
             st.markdown(f"""
-            <div style='margin-top: 1.2rem; padding: 1.2rem; background: var(--bg-card);
+            <div style='margin-top: 0.8rem; padding: 1.1rem; background: var(--bg-card);
                         border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow);'>
                 <div style='font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-                            letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.8rem;
-                            border-bottom: 1px solid var(--border); padding-bottom: 0.4rem;'>Model Performance</div>
+                            letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.6rem;
+                            border-bottom: 1px solid var(--border); padding-bottom: 0.3rem;'>Model Performance</div>
                 <div style='font-size: 0.82rem; color: var(--text); font-weight: 600; margin-bottom: 0.5rem;
                             display:flex; justify-content:space-between;'><span>Accuracy</span><span>91.76%</span></div>
                 <div style='font-size: 0.82rem; color: var(--text); font-weight: 600; margin-bottom: 0.5rem;
@@ -236,11 +240,11 @@ def _sidebar_nav():
                 <div style='font-size: 0.82rem; color: var(--text); font-weight: 600;
                             display:flex; justify-content:space-between;'><span>MAE</span><span>3.04 marks</span></div>
             </div>
-            <div style='margin-top: 1rem; padding: 1.2rem; background: var(--bg-card);
+            <div style='margin-top: 0.8rem; padding: 1.1rem; background: var(--bg-card);
                         border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow);'>
                 <div style='font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-                            letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.8rem;
-                            border-bottom: 1px solid var(--border); padding-bottom: 0.4rem;'>System Info</div>
+                            letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.6rem;
+                            border-bottom: 1px solid var(--border); padding-bottom: 0.3rem;'>System Info</div>
                 <div style='font-size: 0.82rem; color: var(--text); font-weight: 500; margin-bottom: 0.5rem;
                             display:flex; align-items:center; gap:0.5rem;'>
                     {_icon2("database", "#b07d4e")} 30,640 records loaded
@@ -532,20 +536,20 @@ def show_ai_study_coach():
             unsafe_allow_html=True,
         )
         starters = [
-            ("📊 Analyse my performance",
+            ("Analyse my performance", ":material/analytics:",
              "I scored 68 in math and 75 in reading. Am I performing well?"),
-            ("📚 Explain a concept",
+            ("Explain a concept", ":material/menu_book:",
              "Can you explain quadratic equations in simple terms?"),
-            ("🗓️ Build a study plan",
+            ("Build a study plan", ":material/event_note:",
              "Give me a 7-day plan to improve my algebra skills."),
-            ("🎯 Take a quiz",
+            ("Take a quiz", ":material/quiz:",
              "Give me a quiz on trigonometry basics."),
         ]
         cols = st.columns(4)
-        for i, (label, prompt_text) in enumerate(starters):
+        for i, (label, icon_val, prompt_text) in enumerate(starters):
             with cols[i]:
                 st.markdown('<div class="starter-chip">', unsafe_allow_html=True)
-                if st.button(label, key=f"starter_{i}", use_container_width=True):
+                if st.button(label, icon=icon_val, key=f"starter_{i}", use_container_width=True):
                     try:
                         with st.status("Starting AI Study Coach...", expanded=True) as status:
                             _handle_user_message(prompt_text, coach_app, status)
