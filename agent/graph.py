@@ -51,10 +51,8 @@ def _build_graph() -> StateGraph:
     workflow.add_edge("retriever", "supervisor")
     workflow.add_edge("planner",   "supervisor")
 
-    # Quiz turns are interactive. Once the quizzer emits a question or feedback,
-    # the graph must pause until the next user message instead of looping back
-    # through the supervisor while quiz_active=True.
-    workflow.add_edge("quizzer", END)
+    # send quiz output through end so mixed requests can be shown together.
+    workflow.add_edge("quizzer", "end")
 
     # End node terminates the graph
     workflow.add_edge("end", END)
