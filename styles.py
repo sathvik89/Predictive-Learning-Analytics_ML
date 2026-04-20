@@ -22,10 +22,10 @@ def apply_global_styles():
         --accent:    #b07d4e;
         --accent-lt: #d4a574;
         --accent-dk: #8d6035;
-        --text:      #2c2416;
-        --text-dim:  #7a6a55;
-        --border:    #d9cfc2;
-        --shadow:    0 2px 20px rgba(100,70,30,0.08);
+        --text:      #4a3621;
+        --text-dim:  #8b7b68;
+        --border:    #e8ddc8;
+        --shadow:    0 2px 20px rgba(100,70,30,0.06);
         --radius:    14px;
     }
 
@@ -38,6 +38,16 @@ def apply_global_styles():
 
     /* Hide chrome only — NOT stHeader: that region contains the sidebar collapse/expand control */
     #MainMenu, footer { visibility: hidden; }
+
+    /* Fix Streamlit default header/icons to be brown instead of black */
+    header[data-testid="stHeader"] {
+        background-color: transparent !important;
+    }
+    header[data-testid="stHeader"] svg, 
+    [data-testid="stSidebar"] button[data-testid="stBaseButton-secondary"] svg {
+        fill: var(--accent) !important;
+        color: var(--accent) !important;
+    }
 
     /* ── SIDEBAR ─────────────────────────────────────────────────────────────── */
     [data-testid="stSidebar"] {
@@ -478,43 +488,55 @@ def apply_global_styles():
         font-size: 0.88em !important;
     }
 
-    /* ── FIX 2: Chat input box – matches accent theme, NOT black ────────────── */
+    /* ── FIX 2: Chat input box – NO BLACK, NO GREY ──────────────────────────── */
+    /* This targets the full-width fixed container that usually sticks as a black bar */
+    .stChatInput {
+        background-color: var(--bg) !important;
+        padding-top: 1rem !important;
+        padding-bottom: 2rem !important;
+        border-top: 1px solid var(--border) !important;
+    }
+
+    /* The input box wrapper - switching from dark grey to Cream */
     [data-testid="stChatInputContainer"] {
-        background: var(--bg-card) !important;
-        border: 1.5px solid #B17D4F !important;
-        border-radius: 14px !important;
-        padding: 0.3rem 0.6rem !important;
-        box-shadow: 0 2px 12px rgba(177,125,79,0.10) !important;
-        transition: border-color 0.2s, box-shadow 0.2s !important;
+        background-color: var(--bg-card) !important;
+        border: 2px solid var(--accent) !important;
+        border-radius: 16px !important;
+        padding: 0.4rem 0.8rem !important;
+        box-shadow: 0 4px 20px rgba(100,70,30,0.08) !important;
     }
-    [data-testid="stChatInputContainer"]:focus-within {
-        border-color: var(--accent-dk) !important;
-        box-shadow: 0 0 0 3px rgba(177,125,79,0.18) !important;
-    }
+
+    /* Target the textarea background and text color directly */
     [data-testid="stChatInputContainer"] textarea {
-        font-family: 'DM Sans', sans-serif !important;
-        font-size: 0.92rem !important;
+        background-color: transparent !important;
         color: var(--text) !important;
-        background: transparent !important;
+        font-family: 'DM Sans', sans-serif !important;
         caret-color: var(--accent) !important;
     }
-    /* Placeholder text */
+
+    /* Ensure placeholder is brown-tinted */
     [data-testid="stChatInputContainer"] textarea::placeholder {
         color: var(--text-dim) !important;
-        opacity: 0.8 !important;
+        opacity: 0.7 !important;
     }
-    /* Send button inside chat input */
+
+    /* The circular send button - Brown matching the theme */
     [data-testid="stChatInputContainer"] button {
-        background: var(--accent) !important;
-        border: none !important;
-        border-radius: 8px !important;
+        background-color: var(--accent) !important;
         color: white !important;
-        margin-bottom: 0 !important;
-        box-shadow: none !important;
+        border-radius: 12px !important;
+        transition: all 0.2s ease !important;
+        margin-bottom: 2px !important;
     }
+
     [data-testid="stChatInputContainer"] button:hover {
-        background: var(--accent-dk) !important;
-        transform: none !important;
+        background-color: var(--accent-dk) !important;
+        transform: scale(1.08) !important;
+    }
+
+    /* Force the arrow icon inside the button to be white */
+    [data-testid="stChatInputContainer"] button svg {
+        fill: white !important;
     }
 
     /* ── FIX 3: st.status "thinking" box – borderless, seamless, dark text ──── */
@@ -594,7 +616,7 @@ def apply_global_styles():
     }
 
     /* Session row buttons — make them look like compact list items, not chunky buttons */
-    [data-testid="stSidebar"] [data-testid="stButton"] > button[kind="secondary"] {
+    [data-testid="stSidebar"] div[class*="st-key-open_sess_"] button[kind="secondary"] {
         background: transparent !important;
         border: none !important;
         border-radius: 8px !important;
@@ -611,7 +633,7 @@ def apply_global_styles():
         overflow: hidden !important;
         text-overflow: ellipsis !important;
     }
-    [data-testid="stSidebar"] [data-testid="stButton"] > button[kind="secondary"]:hover {
+    [data-testid="stSidebar"] div[class*="st-key-open_sess_"] button[kind="secondary"]:hover {
         background: rgba(176,125,78,0.10) !important;
         color: var(--accent) !important;
         transform: none !important;
@@ -619,7 +641,7 @@ def apply_global_styles():
     }
 
     /* Active session row (primary button) */
-    [data-testid="stSidebar"] [data-testid="stButton"] > button[kind="primary"] {
+    [data-testid="stSidebar"] div[class*="st-key-open_sess_"] button[kind="primary"] {
         background: rgba(176,125,78,0.14) !important;
         border: 1px solid rgba(176,125,78,0.35) !important;
         border-radius: 8px !important;
@@ -632,7 +654,7 @@ def apply_global_styles():
         box-shadow: none !important;
         margin-bottom: 0.1rem !important;
     }
-    [data-testid="stSidebar"] [data-testid="stButton"] > button[kind="primary"]:hover {
+    [data-testid="stSidebar"] div[class*="st-key-open_sess_"] button[kind="primary"]:hover {
         background: rgba(176,125,78,0.22) !important;
         transform: none !important;
     }
@@ -658,14 +680,13 @@ def apply_global_styles():
     }
 
     /* New Conversation button — keep it accent-styled */
-    [data-testid="stSidebar"] button[data-testid="stBaseButton-secondary"][key="new_conv"],
-    [data-testid="stSidebar"] [key="new_conv"] button {
+    [data-testid="stSidebar"] div.st-key-new_conv button {
         background: var(--accent) !important;
         color: white !important;
         border-color: var(--accent) !important;
         font-weight: 700 !important;
     }
-    [data-testid="stSidebar"] [key="new_conv"] button:hover {
+    [data-testid="stSidebar"] div.st-key-new_conv button:hover {
         background: var(--accent-dk) !important;
     }
 

@@ -118,7 +118,7 @@ def _sidebar_nav():
             st.markdown('<hr style="border-color:var(--border); margin:1rem 0 0.8rem 0;">', unsafe_allow_html=True)
 
             # New conversation button
-            if st.button("✏️  New Conversation", use_container_width=True, key="new_conv"):
+            if st.button("New Conversation", icon=":material/add:", use_container_width=True, key="new_conv"):
                 _start_new_session()
                 st.rerun()
 
@@ -147,7 +147,7 @@ def _sidebar_nav():
 
             # Past conversations
             st.markdown(
-                '<div class="sidebar-section-label">🕒 Past conversations</div>',
+                f'<div class="sidebar-section-label">{_icon("clock")} Past conversations</div>',
                 unsafe_allow_html=True,
             )
             rename_sid = st.session_state.get("coach_rename_sid")
