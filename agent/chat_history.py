@@ -1,14 +1,14 @@
 """
-chat_history.py – PostgreSQL-backed (Neon) chat sessions and messages.
+chat_history.py - PostgreSQL-backed (Neon) chat sessions and messages.
 
 Drop-in replacement for the SQLite version.
 Every function name, parameter, and return type is identical.
 Only the internal connection and SQL syntax changed.
 
 Tables created:
-  chat_sessions      – one row per conversation
-  chat_messages      – all messages for every conversation
-  chat_agent_state   – serialised LangGraph state per conversation
+  chat_sessions      - one row per conversation
+  chat_messages      - all messages for every conversation
+  chat_agent_state   - serialised LangGraph state per conversation
 """
 
 import os

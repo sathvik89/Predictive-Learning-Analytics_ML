@@ -106,7 +106,7 @@ def _wants_study_plan(text: str) -> bool:
 def _wants_performance_analysis(text: str) -> bool:
     value = _normalise_query(text)
     personal_terms = (" my ", " i ", " me ", " myself ")
-    performance_terms = ("perform", "score", "scored", "marks", "grade", "predicted", "category")
+    performance_terms = ("perform", "score", "scored", "marks", "grade", "predicted", "category","performance")
     padded = f" {value} "
     return _has_student_data_signal(value) or (
         any(term in value for term in performance_terms)

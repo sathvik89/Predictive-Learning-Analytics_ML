@@ -1,6 +1,6 @@
 """
 Limits LangChain message history length for each graph invoke.
-Full transcripts stay in SQLite + Streamlit chat_display; the graph only
+keeps only last 20 msgs
 needs a recent window so context stays relevant without huge payloads.
 """
 
@@ -10,7 +10,6 @@ from typing import List
 
 from langchain_core.messages import BaseMessage
 
-# ~10 user turns (user + assistant pairs); tune without changing DB schema.
 MAX_LANGCHAIN_MESSAGES: int = 20
 
 

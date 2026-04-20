@@ -28,7 +28,7 @@ except Exception as e:
 # CLUSTER → CATEGORY MAPPING
 # ─────────────────────────────────────────────
 CATEGORY_MAP = {0: "At-Risk", 1: "Average", 2: "High-Performer"}
-
+#median values
 FEATURE_DEFAULTS = {
     "math": 67.0,
     "reading": 70.0,

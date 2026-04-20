@@ -80,7 +80,7 @@ def _sidebar_nav():
             </div>
             <div style='font-size: 0.78rem; color: var(--text-dim); margin-top: 0.7rem;
                         text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.75;'>
-                ML Analytics &middot; Milestone 1
+                ML Analytics &middot; Milestone 1 & 2
             </div>
         </div>
         """, unsafe_allow_html=True)

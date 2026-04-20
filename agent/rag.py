@@ -158,7 +158,7 @@ DOCUMENTS = KNOWLEDGE_BASE + _load_curated_docs()
 _embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 _embeddings      = _embedding_model.encode(DOCUMENTS, show_progress_bar=False)
 _dimension       = _embeddings.shape[1]
-
+#using faiss as vector DB. 
 _index = faiss.IndexFlatL2(_dimension)
 _index.add(np.array(_embeddings, dtype="float32"))
 
@@ -220,7 +220,7 @@ def _search_local(query: str, k: int = 3) -> list[str]:
     # neighbours. This lets the caller fall back to web search or a polite gap.
     return []
 
-
+#web search tool
 def _web_search(query: str, k: int = 3) -> list[str]:
     """
     Optional Tavily-backed academic web search.
