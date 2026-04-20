@@ -1,10 +1,8 @@
 """
 Reusable HTML component functions for consistent UI elements.
 """
-
 import streamlit as st
 from .icons import icon
-
 
 def metric_card(label, value, subtitle="", center_align=False, value_size="2.6rem", extra_style=""):
     """
@@ -25,7 +23,6 @@ def metric_card(label, value, subtitle="", center_align=False, value_size="2.6re
     value_style = f"font-size: {value_size};" if value_size != "2.6rem" else ""
     
     subtitle_html = f'<div class="card-body" style="font-size: 0.78rem;">{subtitle}</div>' if subtitle else ""
-    
     return f"""
     <div class='intel-card' style='{align_style} {extra_style}'>
         <div class='card-label'>{label}</div>
@@ -33,8 +30,7 @@ def metric_card(label, value, subtitle="", center_align=False, value_size="2.6re
         {subtitle_html}
     </div>
     """
-
-
+    
 def capability_card(icon_svg, title, body):
     """
     Create a capability card with icon, title, and description.
@@ -56,7 +52,6 @@ def capability_card(icon_svg, title, body):
     </div>
     """
 
-
 def recommendation_card(icon_svg, title, body):
     """
     Create a recommendation card with icon, title, and description.
@@ -77,7 +72,6 @@ def recommendation_card(icon_svg, title, body):
     </div>
     """
 
-
 def section_title(text):
     """
     Create a section title with accent border.
@@ -90,7 +84,6 @@ def section_title(text):
     """
     return f"<div class='section-title'>{text}</div>"
 
-
 def page_title(text):
     """
     Create a page title.
@@ -102,7 +95,6 @@ def page_title(text):
         HTML string for the page title
     """
     return f"<div class='page-title'>{text}</div>"
-
 
 def page_subtitle(text):
     """
