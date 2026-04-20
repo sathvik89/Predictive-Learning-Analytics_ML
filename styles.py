@@ -87,6 +87,30 @@ def apply_global_styles():
         outline: none !important;
     }
 
+    /* Dashboard sub-nav specific styling */
+    .st-key-dash_home button,
+    .st-key-dash_perf button,
+    .st-key-dash_pred button,
+    .st-key-nav_dash button,
+    .st-key-nav_coach button {
+        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        padding: 1.1rem !important;
+        border-radius: 14px !important;
+        font-size: 0.88rem !important;
+        letter-spacing: 0.08em !important;
+    }
+    .st-key-dash_home button:hover,
+    .st-key-dash_perf button:hover,
+    .st-key-dash_pred button:hover,
+    .st-key-nav_dash button:hover,
+    .st-key-nav_coach button:hover {
+        transform: translateY(-2px) !important;
+    }
+
     /* Active nav button state */
     .nav-btn-active button {
         background: var(--accent) !important;

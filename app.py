@@ -84,14 +84,14 @@ def _sidebar_nav():
         # ── Dashboard sub-nav (Home / Performance / Predict) ─────────────────
         # Only show when on the dashboard page so the coach sidebar stays clean
         if current == "dashboard":
-            if st.button("  HOME", use_container_width=True, key="dash_home"):
+            if st.button("HOME", icon=":material/home:", use_container_width=True, key="dash_home"):
                 st.session_state.page = "home"
                 st.session_state.prediction_run = False
                 st.rerun()
-            if st.button("  PERFORMANCE", use_container_width=True, key="dash_perf"):
+            if st.button("PERFORMANCE", icon=":material/insights:", use_container_width=True, key="dash_perf"):
                 st.session_state.page = "performance"
                 st.rerun()
-            if st.button("  PREDICT", use_container_width=True, key="dash_pred"):
+            if st.button("PREDICT", icon=":material/sensors:", use_container_width=True, key="dash_pred"):
                 st.session_state.page = "predict"
                 st.rerun()
 
@@ -102,13 +102,13 @@ def _sidebar_nav():
         coach_style = "nav-btn-active" if current == "coach" else ""
 
         st.markdown(f'<div class="{dash_style}">', unsafe_allow_html=True)
-        if st.button("📊  Dashboard", use_container_width=True, key="nav_dash"):
+        if st.button("Dashboard", icon=":material/bar_chart:", use_container_width=True, key="nav_dash"):
             st.session_state.current_page = "dashboard"
             st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
 
         st.markdown(f'<div class="{coach_style}">', unsafe_allow_html=True)
-        if st.button("🤖  AI Study Coach", use_container_width=True, key="nav_coach"):
+        if st.button("AI Study Coach", icon=":material/smart_toy:", use_container_width=True, key="nav_coach"):
             st.session_state.current_page = "coach"
             st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
