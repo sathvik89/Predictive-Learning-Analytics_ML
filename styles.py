@@ -2,9 +2,7 @@
 styles.py – Global styling and theme configuration for the Streamlit app.
 Matches Milestone 1 design language exactly.
 """
-
 import streamlit as st
-
 
 def apply_global_styles():
     """
@@ -69,6 +67,7 @@ def apply_global_styles():
         margin-top: 0 !important;
     }
 
+
     /* Nav buttons in sidebar */
     .stSidebar button {
         width: 100% !important;
@@ -131,6 +130,7 @@ def apply_global_styles():
         background: var(--accent-dk) !important;
         border-color: var(--accent-dk) !important;
     }
+
 
     /* ── MAIN LAYOUT ─────────────────────────────────────────────────────────── */
     .stApp { background-color: var(--bg) !important; }
