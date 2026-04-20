@@ -76,13 +76,13 @@ def apply_global_styles():
         border: 1px solid var(--border) !important;
         color: var(--text) !important;
         border-radius: 10px !important;
-        padding: 0.75rem 1.2rem !important;
+        padding: 0.62rem 1rem !important;
         font-family: 'DM Sans', sans-serif !important;
         font-weight: 600 !important;
         font-size: 0.85rem !important;
         letter-spacing: 0.05em !important;
         text-align: left !important;
-        margin-bottom: 0.4rem !important;
+        margin-bottom: 0.3rem !important;
         transition: all 0.2s ease !important;
         box-shadow: var(--shadow) !important;
     }
@@ -108,7 +108,7 @@ def apply_global_styles():
         justify-content: center !important;
         align-items: center !important;
         gap: 0.5rem !important;
-        padding: 1.1rem !important;
+        padding: 0.82rem !important;
         border-radius: 14px !important;
         font-size: 0.88rem !important;
         letter-spacing: 0.08em !important;
@@ -389,7 +389,7 @@ def apply_global_styles():
         overflow: hidden;
     }
     .chat-page-header::before {
-        content: '🤖';
+        content: '';
         position: absolute;
         right: 2.5rem;
         top: 50%;
