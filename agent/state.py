@@ -15,10 +15,10 @@ class AgentState(TypedDict):
     quiz_active: bool
     awaiting_answer: bool
     study_plan: str
-    plan: List[str]
-    task_plan: List[dict]
-    response_parts: List[dict]
-    response_mode: str
-    direct_response: str
+    plan: List[str] #initial master node steps prep 
+    task_plan: List[dict] #reason for each step 
+    response_parts: List[dict] #append teh respnses of each node so that u can compile them at the end
+    response_mode: str #(academic , greeting, off-topic , cheatingCase)
+    direct_response: str #(ex - greeting could be direct msg)
     current_step_index: int
     next_node: str

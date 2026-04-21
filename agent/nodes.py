@@ -245,7 +245,7 @@ USER QUERY: {user_msg}
     except Exception as e:
         print(f"[master] planner fallback due to llm error: {e}")
         direct_response = (
-            "The coach is currently under heavy load, so I could not safely plan that request. "
+            "The coach is currently under heavy load, so I could not safely plan that request.(Rate Limit Error)"
             "Please retry in a moment."
             if _is_rate_limit_error(e)
             else "I hit a temporary planning issue. Please retry your last message."
@@ -751,7 +751,7 @@ Rules:
             + "\n\n---\n\n".join(questions_md)
             + "\n\n---\n\n"
             "Reply with all answers together, for example:\n\n"
-            "`1. A, 2. C, 3. B, 4. D, 5. A`"
+            "`1. A, 2. B ...`"
         )
         return {
             "quiz_questions":  [q.model_dump() for q in generated.questions],
